@@ -119,12 +119,12 @@ function ReportIssuePage() {
         imageUrl = data.publicUrl;
       }
 
-      // --- Call ML Backend ---
-      const response = await fetch('http://127.0.0.1:8000/predict-issue', {
+        // --- Call ML Backend ---
+        const response = await fetch('https://techxnova-localgov-backend.hf.space/predict-issue', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: `Issue Title: ${title}.`, image_url: imageUrl }),
-      });
+          } );
       const prediction = await response.json();
       if (prediction.error) throw new Error(prediction.error);
 
